@@ -1,0 +1,202 @@
+[
+  {
+    "Id": 1,
+    "Attraction_Id": 1,
+    "Img_Src": "http://bobruisk.by/i/krepost1.jpg"
+  },
+  {
+    "Id": 2,
+    "Attraction_Id": 1,
+    "Img_Src": "http://bobruisk.by/i/krepost2.jpg"
+  },
+  {
+    "Id": 3,
+    "Attraction_Id": 1,
+    "Img_Src": "http://bobruisk.by/i/krepost3.jpg"
+  },
+  {
+    "Id": 4,
+    "Attraction_Id": 1,
+    "Img_Src": "http://bobruisk.by/i/krepost4.jpg"
+  },
+  {
+    "Id": 5,
+    "Attraction_Id": 2,
+    "Img_Src": "http://bobruisk.by/i/tank.jpg"
+  },
+  {
+    "Id": 6,
+    "Attraction_Id": 3,
+    "Img_Src": "http://bobruisk.by/i/pam_leninu.jpg"
+  },
+  {
+    "Id": 7,
+    "Attraction_Id": 4,
+    "Img_Src": "http://bobruisk.by/i/dednovo1.jpg"
+  },
+  {
+    "Id": 8,
+    "Attraction_Id": 4,
+    "Img_Src": "http://bobruisk.by/i/dednovo2.jpg"
+  },
+  {
+    "Id": 9,
+    "Attraction_Id": 4,
+    "Img_Src": "http://bobruisk.by/i/dednovo3.jpg"
+  },
+  {
+    "Id": 10,
+    "Attraction_Id": 4,
+    "Img_Src": "http://bobruisk.by/i/dednovo4.jpg"
+  },
+  {
+    "Id": 11,
+    "Attraction_Id": 5,
+    "Img_Src": "http://bobruisk.by/i/sovetskaya79.jpg"
+  },
+  {
+    "Id": 12,
+    "Attraction_Id": 6,
+    "Img_Src": "http://bobruisk.by/i/zdanie_banka.jpg"
+  },
+  {
+    "Id": 13,
+    "Attraction_Id": 7,
+    "Img_Src": "http://bobruisk.by/i/sovetskaya45.jpg"
+  },
+  {
+    "Id": 14,
+    "Attraction_Id": 8,
+    "Img_Src": "http://bobruisk.by/i/pushkina21.jpg"
+  },
+  {
+    "Id": 15,
+    "Attraction_Id": 9,
+    "Img_Src": "http://bobruisk.by/i/internac25.jpg"
+  },
+  {
+    "Id": 16,
+    "Attraction_Id": 10,
+    "Img_Src": "http://bobruisk.by/i/memorial_minskaya1.jpg"
+  },
+  {
+    "Id": 17,
+    "Attraction_Id": 10,
+    "Img_Src": "http://bobruisk.by/i/memorial_minskaya2.jpg"
+  },
+  {
+    "Id": 18,
+    "Attraction_Id": 11,
+    "Img_Src": "http://bobruisk.by/i/vechniy_ogon.jpg"
+  },
+  {
+    "Id": 19,
+    "Attraction_Id": 12,
+    "Img_Src": "http://bobruisk.by/i/internac38.jpg"
+  },
+  {
+    "Id": 20,
+    "Attraction_Id": 13,
+    "Img_Src": "http://bobruisk.by/i/skver_socialistich.jpg"
+  },
+  {
+    "Id": 21,
+    "Attraction_Id": 14,
+    "Img_Src": "http://bobruisk.by/i/praviy_bereg_berezina.jpg"
+  },
+  {
+    "Id": 22,
+    "Attraction_Id": 15,
+    "Img_Src": "http://bobruisk.by/i/voiny_internacionalisty.jpg"
+  },
+  {
+    "Id": 23,
+    "Attraction_Id": 16,
+    "Img_Src": "http://bobruisk.by/i/pam_znak_bobruichan.jpg"
+  },
+  {
+    "Id": 24,
+    "Attraction_Id": 17,
+    "Img_Src": "http://bobruisk.by/i/dneprovskoy_flotilii.jpg"
+  },
+  {
+    "Id": 25,
+    "Attraction_Id": 18,
+    "Img_Src": "http://bobruisk.by/i/alleya_pravednikov.jpg"
+  },
+  {
+    "Id": 26,
+    "Attraction_Id": 19,
+    "Img_Src": "http://bobruisk.by/i/dunin_marzinkevich.jpg"
+  },
+  {
+    "Id": 27,
+    "Attraction_Id": 20,
+    "Img_Src": "http://bobruisk.by/i/very_horujey_bust.jpg"
+  },
+  {
+    "Id": 29,
+    "Attraction_Id": 21,
+    "Img_Src": "http://bobruisk.by/i/bust_olovnikovu.jpg"
+  },
+  {
+    "Id": 30,
+    "Attraction_Id": 22,
+    "Img_Src": "http://bobruisk.by/i/gostinica_bobruisk.jpg"
+  },
+  {
+    "Id": 31,
+    "Attraction_Id": 23,
+    "Img_Src": "http://bobruisk.by/i/ispolkom1.jpg"
+  },
+  {
+    "Id": 32,
+    "Attraction_Id": 24,
+    "Img_Src": "http://bobruisk.by/i/socialistic119.jpg"
+  },
+  {
+    "Id": 33,
+    "Attraction_Id": 25,
+    "Img_Src": "http://bobruisk.by/i/socialistic103.jpg"
+  },
+  {
+    "Id": 34,
+    "Attraction_Id": 26,
+    "Img_Src": "http://bobruisk.by/i/dom_kollektiva.jpg"
+  },
+  {
+    "Id": 35,
+    "Attraction_Id": 27,
+    "Img_Src": "http://bobruisk.by/i/pushkina13652.jpg"
+  },
+  {
+    "Id": 36,
+    "Attraction_Id": 28,
+    "Img_Src": "http://bobruisk.by/i/vokzal_bobruisk.jpg"
+  },
+  {
+    "Id": 37,
+    "Attraction_Id": 29,
+    "Img_Src": "http://bobruisk.by/i/vokzal_berezina.jpg"
+  },
+  {
+    "Id": 38,
+    "Attraction_Id": 30,
+    "Img_Src": "http://bobruisk.by/i/sovetskaya76.jpg"
+  },
+  {
+    "Id": 39,
+    "Attraction_Id": 31,
+    "Img_Src": "http://bobruisk.by/i/kostel1.jpg"
+  },
+  {
+    "Id": 40,
+    "Attraction_Id": 31,
+    "Img_Src": "http://bobruisk.by/i/kostel2.jpg"
+  },
+  {
+    "Id": 41,
+    "Attraction_Id": 32,
+    "Img_Src": "http://bobruisk.by/i/svyato_georg_hram.jpg"
+  }
+]

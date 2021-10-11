@@ -1,0 +1,44 @@
++--+-------------+------------------------------------------------+
+|Id|Attraction_Id|Img_Src                                         |
++--+-------------+------------------------------------------------+
+|1 |1            |http://bobruisk.by/i/krepost1.jpg               |
+|2 |1            |http://bobruisk.by/i/krepost2.jpg               |
+|3 |1            |http://bobruisk.by/i/krepost3.jpg               |
+|4 |1            |http://bobruisk.by/i/krepost4.jpg               |
+|5 |2            |http://bobruisk.by/i/tank.jpg                   |
+|6 |3            |http://bobruisk.by/i/pam_leninu.jpg             |
+|7 |4            |http://bobruisk.by/i/dednovo1.jpg               |
+|8 |4            |http://bobruisk.by/i/dednovo2.jpg               |
+|9 |4            |http://bobruisk.by/i/dednovo3.jpg               |
+|10|4            |http://bobruisk.by/i/dednovo4.jpg               |
+|11|5            |http://bobruisk.by/i/sovetskaya79.jpg           |
+|12|6            |http://bobruisk.by/i/zdanie_banka.jpg           |
+|13|7            |http://bobruisk.by/i/sovetskaya45.jpg           |
+|14|8            |http://bobruisk.by/i/pushkina21.jpg             |
+|15|9            |http://bobruisk.by/i/internac25.jpg             |
+|16|10           |http://bobruisk.by/i/memorial_minskaya1.jpg     |
+|17|10           |http://bobruisk.by/i/memorial_minskaya2.jpg     |
+|18|11           |http://bobruisk.by/i/vechniy_ogon.jpg           |
+|19|12           |http://bobruisk.by/i/internac38.jpg             |
+|20|13           |http://bobruisk.by/i/skver_socialistich.jpg     |
+|21|14           |http://bobruisk.by/i/praviy_bereg_berezina.jpg  |
+|22|15           |http://bobruisk.by/i/voiny_internacionalisty.jpg|
+|23|16           |http://bobruisk.by/i/pam_znak_bobruichan.jpg    |
+|24|17           |http://bobruisk.by/i/dneprovskoy_flotilii.jpg   |
+|25|18           |http://bobruisk.by/i/alleya_pravednikov.jpg     |
+|26|19           |http://bobruisk.by/i/dunin_marzinkevich.jpg     |
+|27|20           |http://bobruisk.by/i/very_horujey_bust.jpg      |
+|29|21           |http://bobruisk.by/i/bust_olovnikovu.jpg        |
+|30|22           |http://bobruisk.by/i/gostinica_bobruisk.jpg     |
+|31|23           |http://bobruisk.by/i/ispolkom1.jpg              |
+|32|24           |http://bobruisk.by/i/socialistic119.jpg         |
+|33|25           |http://bobruisk.by/i/socialistic103.jpg         |
+|34|26           |http://bobruisk.by/i/dom_kollektiva.jpg         |
+|35|27           |http://bobruisk.by/i/pushkina13652.jpg          |
+|36|28           |http://bobruisk.by/i/vokzal_bobruisk.jpg        |
+|37|29           |http://bobruisk.by/i/vokzal_berezina.jpg        |
+|38|30           |http://bobruisk.by/i/sovetskaya76.jpg           |
+|39|31           |http://bobruisk.by/i/kostel1.jpg                |
+|40|31           |http://bobruisk.by/i/kostel2.jpg                |
+|41|32           |http://bobruisk.by/i/svyato_georg_hram.jpg      |
++--+-------------+------------------------------------------------+

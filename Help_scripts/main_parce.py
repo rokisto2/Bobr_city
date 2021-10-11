@@ -2,7 +2,7 @@ from selenium import webdriver
 import time
 
 def save_html(url, page):
-    driver = webdriver.Chrome(executable_path='Drivers/chromedriver.exe')
+    driver = webdriver.Chrome(executable_path='../Drivers/chromedriver.exe')
 
 
     try:
