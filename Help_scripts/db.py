@@ -66,4 +66,6 @@ class BotDB:
     def get_like_attraction_from_user(self, user_id):
         with self.connect.cursor() as cursor:
             cursor.execute('SELECT Attraction_id from users_like WHERE  Telegram_user_id = %s', user_id)
-        self.connect.commit()
+            like_attractions = cursor.fetchall()
+            cursor.close()
+            return like_attractions

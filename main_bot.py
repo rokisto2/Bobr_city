@@ -2,10 +2,11 @@ from aiogram import Bot, Dispatcher, types, executor
 import logging
 
 from aiogram.types import InputMediaPhoto
+from aiogram.utils.callback_data import CallbackData
 
 from Help_scripts import Settings_bot
 from Help_scripts.db import BotDB
-from aiogram.utils.callback_data import CallbackData
+from Help_scripts import KeyboardMarkup
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -25,12 +26,9 @@ async def hello(message: types.Message):
         db.user_add(message.from_user.id)
         await message.answer('Добро пожаловать')
     else:
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         await message.answer('Рады вас вновь встретить')
-
-        buttons = ["Все достопримечательности", 'Мои достопримечательности']
-        keyboard.add(*buttons)
-        await message.answer('Что показать', reply_markup=keyboard)
+    keyboard = KeyboardMarkup.what_show(user_id=message.from_user.id, db2=db)
+    await message.answer('Что показать', reply_markup=keyboard)
 
 
 @dp.message_handler(lambda message: message.text == 'Все достопримечательности')
@@ -51,7 +49,7 @@ async def get_all_attractions(message: types.Message):
 
 
 @dp.callback_query_handler(cd_learn_more.filter())
-async def callbacks(call: types.CallbackQuery, callback_data: dict):
+async def callback_learn_more(call: types.CallbackQuery, callback_data: dict):
     id_attraction = callback_data['id_attraction']
     attraction = db.get_attraction(id_attraction)
     attraction_img = db.get_attraction_img(id_attraction)
@@ -63,13 +61,22 @@ async def callbacks(call: types.CallbackQuery, callback_data: dict):
             media.append(InputMediaPhoto(i[0]))
         await bot.send_media_group(call.message.chat.id, media=media)
     keyboard = types.InlineKeyboardMarkup(row_width=1)
+    id_user = call.message.chat.id
     buttons = [
-        types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=call.message.from_user.id,
-                                                                       id_attraction=attraction[0])),
+        types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=id_user,
+                                                                       id_attraction=attraction[0]))
     ]
     keyboard.add(*buttons)
     await bot.send_message(call.message.chat.id, attraction[3], reply_markup=keyboard)
 
+
+@dp.callback_query_handler(cd_like.filter())
+async def callback_like(call: types.CallbackQuery, callback_data: dict):
+    id_attraction = callback_data['id_attraction']
+    id_user = callback_data['id_user']
+    print(id_user,id_attraction)
+    db.add_attraction_from_user(user_id=id_user, attraction_id=id_attraction)
+    await bot.send_message(call.message.chat.id, "Достопримечательность добавлена")
 
 
 if __name__ == '__main__':
