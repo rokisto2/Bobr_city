@@ -60,12 +60,15 @@ class BotDB:
 
     def add_attraction_from_user(self, user_id, attraction_id):
         with self.connect.cursor() as cursor:
-            cursor.execute('INSERT INTO users_like (Attraction_id, Telegram_user_id) VALUES (%s,%s)', (attraction_id, user_id))
+            cursor.execute('INSERT INTO users_like (Attraction_id, Telegram_user_id) VALUES (%s,%s)',
+                           (attraction_id, user_id))
         self.connect.commit()
 
     def get_like_attraction_from_user(self, user_id):
         with self.connect.cursor() as cursor:
-            cursor.execute('SELECT Attraction_id from users_like WHERE  Telegram_user_id = %s', user_id)
+            cursor.execute(
+                'SELECT attractions.id, attractions.Name, attractions.Address from attractions, users_like  WHERE attractions.id = users_like.Attraction_id AND users_like.Telegram_user_id = %s',
+                user_id)
             like_attractions = cursor.fetchall()
             cursor.close()
             return like_attractions

@@ -48,6 +48,22 @@ async def get_all_attractions(message: types.Message):
                              reply_markup=keyboard)
 
 
+@dp.message_handler(lambda message: message.text == 'Мои достопримечательности')
+async def get_all_attractions(message: types.Message):
+    attractions = db.get_like_attraction_from_user(message.from_user.id)
+
+    for attraction in attractions:
+        keyboard = types.InlineKeyboardMarkup(row_width=2)
+        buttons = [
+            types.InlineKeyboardButton(text='Узнать больше',
+                                       callback_data=cd_learn_more.new(id_attraction=attraction[0]))
+        ]
+        keyboard.add(*buttons)
+        await bot.send_photo(message.chat.id, db.get_attraction_img(attraction[0])[0][0],
+                             caption=attraction[1] + '\n' + attraction[2],
+                             reply_markup=keyboard)
+
+
 @dp.callback_query_handler(cd_learn_more.filter())
 async def callback_learn_more(call: types.CallbackQuery, callback_data: dict):
     id_attraction = callback_data['id_attraction']
@@ -77,7 +93,6 @@ async def callback_like(call: types.CallbackQuery, callback_data: dict):
     print(id_user,id_attraction)
     db.add_attraction_from_user(user_id=id_user, attraction_id=id_attraction)
     await bot.send_message(call.message.chat.id, "Достопримечательность добавлена")
-
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
