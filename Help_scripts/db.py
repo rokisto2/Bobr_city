@@ -72,3 +72,14 @@ class BotDB:
             like_attractions = cursor.fetchall()
             cursor.close()
             return like_attractions
+
+    def is_user_like_attraction(self, user_id, attraction_id):
+        with self.connect.cursor() as cursor:
+            cursor.execute('SELECT * FROM users_like WHERE Telegram_user_id = %s AND Attraction_id = %s',
+                           (user_id, attraction_id))
+            like_attractions = cursor.fetchall()
+            cursor.close()
+        if len(like_attractions) == 1:
+            return False
+        else:
+            return True

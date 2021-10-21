@@ -35,17 +35,9 @@ async def hello(message: types.Message):
 async def get_all_attractions(message: types.Message):
     attractions = db.get_all_attractions()
     for attraction in attractions:
-        keyboard = types.InlineKeyboardMarkup(row_width=2)
-        buttons = [
-            types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=message.from_user.id,
-                                                                           id_attraction=attraction[0])),
-            types.InlineKeyboardButton(text='Узнать больше',
-                                       callback_data=cd_learn_more.new(id_attraction=attraction[0])),
-        ]
-        keyboard.add(*buttons)
         await bot.send_photo(message.chat.id, db.get_attraction_img(attraction[0])[0][0],
                              caption=attraction[1] + '\n' + attraction[2],
-                             reply_markup=keyboard)
+                             reply_markup=KeyboardMarkup.what_datail(message.from_user.id, attraction[0], db))
 
 
 @dp.message_handler(lambda message: message.text == 'Мои достопримечательности')
@@ -77,7 +69,7 @@ async def callback_learn_more(call: types.CallbackQuery, callback_data: dict):
             media.append(InputMediaPhoto(i[0]))
         await bot.send_media_group(call.message.chat.id, media=media)
     keyboard = types.InlineKeyboardMarkup(row_width=1)
-    id_user = call.message.chat.id
+    id_user = call.from_user.id
     buttons = [
         types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=id_user,
                                                                        id_attraction=attraction[0]))
@@ -92,7 +84,10 @@ async def callback_like(call: types.CallbackQuery, callback_data: dict):
     id_user = callback_data['id_user']
     print(id_user,id_attraction)
     db.add_attraction_from_user(user_id=id_user, attraction_id=id_attraction)
-    await bot.send_message(call.message.chat.id, "Достопримечательность добавлена")
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    buttons = ["Все достопримечательности", 'Мои достопримечательности']
+    keyboard.add(*buttons)
+    await bot.send_message(call.message.chat.id, "Достопримечательность добавлена", reply_markup = keyboard )
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
