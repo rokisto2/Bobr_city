@@ -68,14 +68,15 @@ async def callback_learn_more(call: types.CallbackQuery, callback_data: dict):
         for i in attraction_img[1:]:
             media.append(InputMediaPhoto(i[0]))
         await bot.send_media_group(call.message.chat.id, media=media)
-    keyboard = types.InlineKeyboardMarkup(row_width=1)
-    id_user = call.from_user.id
-    buttons = [
-        types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=id_user,
-                                                                       id_attraction=attraction[0]))
-    ]
-    keyboard.add(*buttons)
-    await bot.send_message(call.message.chat.id, attraction[3], reply_markup=keyboard)
+    # keyboard = types.InlineKeyboardMarkup(row_width=1)
+    # id_user = call.from_user.id
+    # buttons = [
+    #     types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=id_user,
+    #                                                                    id_attraction=attraction[0]))
+    # ]
+    # keyboard.add(*buttons)
+    await bot.send_message(call.message.chat.id, attraction[3])
+    await bot.send_location(call.message.chat.id, latitude=attraction[4], longitude=attraction[5])
 
 
 @dp.callback_query_handler(cd_like.filter())
