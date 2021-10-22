@@ -16,7 +16,7 @@ dp = Dispatcher(bot)
 
 db = BotDB()
 
-cd_like = CallbackData('user', 'id_user', 'id_attraction')
+cd_like = CallbackData('user', 'id_user', 'id_attraction', 'types')
 cd_learn_more = CallbackData('attraction', 'id_attraction')
 
 
@@ -79,16 +79,25 @@ async def callback_learn_more(call: types.CallbackQuery, callback_data: dict):
     await bot.send_location(call.message.chat.id, latitude=attraction[4], longitude=attraction[5])
 
 
-@dp.callback_query_handler(cd_like.filter())
+@dp.callback_query_handler(cd_like.filter(types='add'))
 async def callback_like(call: types.CallbackQuery, callback_data: dict):
     id_attraction = callback_data['id_attraction']
     id_user = callback_data['id_user']
-    print(id_user,id_attraction)
+    print(id_user, id_attraction)
     db.add_attraction_from_user(user_id=id_user, attraction_id=id_attraction)
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     buttons = ["Все достопримечательности", 'Мои достопримечательности']
     keyboard.add(*buttons)
-    await bot.send_message(call.message.chat.id, "Достопримечательность добавлена", reply_markup = keyboard )
+    await bot.send_message(call.message.chat.id, "Достопримечательность добавлена", reply_markup=keyboard)
+
+
+@dp.callback_query_handler(cd_like.filter(types='del'))
+async def callback_like(call: types.CallbackQuery, callback_data: dict):
+    id_attraction = callback_data['id_attraction']
+    id_user = callback_data['id_user']
+    print(id_user, id_attraction)
+    db.del_attraction_from_user(user_id=id_user, attraction_id=id_attraction)
+    await bot.send_message(call.message.chat.id, "Достопримечательность удолена", reply_markup=KeyboardMarkup.what_show(id_user, db))
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)

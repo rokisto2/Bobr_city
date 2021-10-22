@@ -21,13 +21,17 @@ def what_datail(user_id, attractions_id, db2: db.BotDB):
 
     if db2.is_user_like_attraction(user_id, attractions_id):
         buttons = [types.InlineKeyboardButton(text='❤', callback_data=cd_like.new(id_user=user_id,
-                                                                                  id_attraction=attractions_id)),
+                                                                                  id_attraction=attractions_id,
+                                                                                  types='add')),
                    types.InlineKeyboardButton(text='Узнать больше',
                                               callback_data=cd_learn_more.new(id_attraction=attractions_id)),
                    ]
         keyboard.add(*buttons)
     else:
-        buttons = [types.InlineKeyboardButton(text='Узнать больше',
+        buttons = [types.InlineKeyboardButton(text='🗑', callback_data=cd_like.new(id_user=user_id,
+                                                                                  id_attraction=attractions_id,
+                                                                                  types='del')),
+                   types.InlineKeyboardButton(text='Узнать больше',
                                               callback_data=cd_learn_more.new(id_attraction=attractions_id))]
         keyboard.add(*buttons)
     return keyboard

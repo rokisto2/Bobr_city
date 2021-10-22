@@ -64,6 +64,12 @@ class BotDB:
                            (attraction_id, user_id))
         self.connect.commit()
 
+    def del_attraction_from_user(self, user_id, attraction_id):
+        with self.connect.cursor() as cursor:
+            cursor.execute('DELETE FROM users_like WHERE Attraction_id = %s AND Telegram_user_id = %s', (attraction_id,user_id))
+        self.connect.commit()
+
+
     def get_like_attraction_from_user(self, user_id):
         with self.connect.cursor() as cursor:
             cursor.execute(
