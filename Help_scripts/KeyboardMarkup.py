@@ -4,6 +4,7 @@ from main_bot import cd_like, cd_learn_more
 
 
 def what_show(user_id, db2: db.BotDB):
+    # Определяет есть ли у пользователя избранные места
     attractions = db2.get_like_attraction_from_user(user_id)
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if len(attractions) > 0:

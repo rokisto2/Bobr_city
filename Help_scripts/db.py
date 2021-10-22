@@ -25,6 +25,7 @@ class BotDB:
                 return False
 
     def user_add(self, user_id: int):
+        # Добавляем юзера в бд
         try:
 
             with self.connect.cursor() as cursor:
@@ -51,7 +52,7 @@ class BotDB:
             return info_attraction
 
     def get_attraction_img(self, attraction_id):
-        # Берем картинку достопримечательность
+        # Берем картинки достопримечательность
         with self.connect.cursor() as cursor:
             cursor.execute("SELECT Img_Src FROM imgs WHERE Attraction_id = %s", attraction_id)
             img_attraction = cursor.fetchall()
@@ -59,18 +60,21 @@ class BotDB:
             return img_attraction
 
     def add_attraction_from_user(self, user_id, attraction_id):
+        # Добавляем избранные места пользователю
         with self.connect.cursor() as cursor:
             cursor.execute('INSERT INTO users_like (Attraction_id, Telegram_user_id) VALUES (%s,%s)',
                            (attraction_id, user_id))
         self.connect.commit()
 
     def del_attraction_from_user(self, user_id, attraction_id):
+        # Удаляем из избранного пользователя достопримечательность
         with self.connect.cursor() as cursor:
-            cursor.execute('DELETE FROM users_like WHERE Attraction_id = %s AND Telegram_user_id = %s', (attraction_id,user_id))
+            cursor.execute('DELETE FROM users_like WHERE Attraction_id = %s AND Telegram_user_id = %s',
+                           (attraction_id, user_id))
         self.connect.commit()
 
-
     def get_like_attraction_from_user(self, user_id):
+        # Показываем избронные достопримечательности пользователя
         with self.connect.cursor() as cursor:
             cursor.execute(
                 'SELECT attractions.id, attractions.Name, attractions.Address from attractions, users_like  WHERE attractions.id = users_like.Attraction_id AND users_like.Telegram_user_id = %s',
@@ -80,6 +84,7 @@ class BotDB:
             return like_attractions
 
     def is_user_like_attraction(self, user_id, attraction_id):
+        # Проверяем есть ли достопримечательность в избранном пользователя
         with self.connect.cursor() as cursor:
             cursor.execute('SELECT * FROM users_like WHERE Telegram_user_id = %s AND Attraction_id = %s',
                            (user_id, attraction_id))

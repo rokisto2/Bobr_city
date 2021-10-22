@@ -8,7 +8,7 @@ from Help_scripts import Settings_bot
 from Help_scripts.db import BotDB
 from Help_scripts import KeyboardMarkup
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=Settings_bot.TOKEN)
 
@@ -47,6 +47,7 @@ async def get_all_attractions(message: types.Message):
     for attraction in attractions:
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         buttons = [
+
             types.InlineKeyboardButton(text='Узнать больше',
                                        callback_data=cd_learn_more.new(id_attraction=attraction[0]))
         ]
@@ -97,7 +98,7 @@ async def callback_like(call: types.CallbackQuery, callback_data: dict):
     id_user = callback_data['id_user']
     print(id_user, id_attraction)
     db.del_attraction_from_user(user_id=id_user, attraction_id=id_attraction)
-    await bot.send_message(call.message.chat.id, "Достопримечательность удолена", reply_markup=KeyboardMarkup.what_show(id_user, db))
+    await bot.send_message(call.message.chat.id, "Достопримечательность удалена", reply_markup=KeyboardMarkup.what_show(id_user, db))
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
