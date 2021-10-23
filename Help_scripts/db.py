@@ -63,7 +63,7 @@ class BotDB:
     def add_attraction_from_user(self, user_id, attraction_id):
         # Добавляем избранные места пользователю
         with self.connect.cursor() as cursor:
-
+            cursor.execute("UPDATE users SET Number_of_likes = Number_of_likes+1 WHERE Telegram_id = %s", user_id)
             cursor.execute('INSERT INTO users_like (Attraction_id, Telegram_user_id) VALUES (%s,%s)',
                            (attraction_id, user_id))
         self.connect.commit()
@@ -71,9 +71,17 @@ class BotDB:
     def del_attraction_from_user(self, user_id, attraction_id):
         # Удаляем из избранного пользователя достопримечательность
         with self.connect.cursor() as cursor:
+            cursor.execute("UPDATE users SET Number_of_likes = Number_of_likes-1 WHERE Telegram_id = %s", user_id)
             cursor.execute('DELETE FROM users_like WHERE Attraction_id = %s AND Telegram_user_id = %s',
                            (attraction_id, user_id))
         self.connect.commit()
+
+    def get_user_Number_of_likes(self, user_id):
+        with self.connect.cursor() as cursor:
+            cursor.execute('SELECT Number_of_likes FROM users WHERE Telegram_id = %s', user_id)
+            count = int(cursor.fetchone()[0])
+            cursor.close()
+            return count
 
     def get_like_attraction_from_user(self, user_id):
         # Показываем избронные достопримечательности пользователя

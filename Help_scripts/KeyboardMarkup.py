@@ -5,9 +5,9 @@ from main_bot import cd_like, cd_learn_more
 
 def what_show(user_id, db2: db.BotDB):
     # Определяет есть ли у пользователя избранные места
-    attractions = db2.get_like_attraction_from_user(user_id)
+    count = db2.get_user_Number_of_likes(user_id)
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    if len(attractions) > 0:
+    if count > 0:
 
         buttons = ["Все достопримечательности", 'Мои достопримечательности']
         keyboard.add(*buttons)
