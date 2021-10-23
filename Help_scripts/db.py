@@ -38,7 +38,7 @@ class BotDB:
     def get_all_attractions(self):
         # Берем все достопримечательности
         with self.connect.cursor() as cursor:
-            cursor.execute("SELECT id, Name, Address FROM attractions")
+            cursor.execute("SELECT id, Name, Address FROM attractions ORDER BY Visited DESC")
             rows = cursor.fetchall()
             cursor.close()
             return rows
@@ -46,6 +46,7 @@ class BotDB:
     def get_attraction(self, attraction_id):
         # Берем определённую достопримечательность
         with self.connect.cursor() as cursor:
+            cursor.execute('UPDATE attractions SET Visited = Visited+1 WHERE id = %s', attraction_id)
             cursor.execute("SELECT * FROM attractions WHERE id = %s", attraction_id)
             info_attraction = cursor.fetchone()
             cursor.close()
@@ -62,6 +63,7 @@ class BotDB:
     def add_attraction_from_user(self, user_id, attraction_id):
         # Добавляем избранные места пользователю
         with self.connect.cursor() as cursor:
+
             cursor.execute('INSERT INTO users_like (Attraction_id, Telegram_user_id) VALUES (%s,%s)',
                            (attraction_id, user_id))
         self.connect.commit()

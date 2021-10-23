@@ -47,7 +47,9 @@ async def get_all_attractions(message: types.Message):
     for attraction in attractions:
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         buttons = [
-
+            types.InlineKeyboardButton(text='🗑', callback_data=cd_like.new(id_user=message.from_user.id,
+                                                                            id_attraction=attraction[0],
+                                                                            types='del')),
             types.InlineKeyboardButton(text='Узнать больше',
                                        callback_data=cd_learn_more.new(id_attraction=attraction[0]))
         ]
