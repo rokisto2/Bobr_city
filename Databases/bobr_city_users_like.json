@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "Id": 5,
+    "Attraction_id": 29,
+    "Telegram_user_id": 1047048746
+  },
+  {
+    "Id": 13,
+    "Attraction_id": 11,
+    "Telegram_user_id": 1047048746
+  },
+  {
+    "Id": 19,
+    "Attraction_id": 17,
+    "Telegram_user_id": 1047048746
+  },
+  {
+    "Id": 20,
+    "Attraction_id": 28,
+    "Telegram_user_id": 788321090
+  },
+  {
+    "Id": 21,
+    "Attraction_id": 25,
+    "Telegram_user_id": 1047048746
+  },
+  {
+    "Id": 25,
+    "Attraction_id": 28,
+    "Telegram_user_id": 1047048746
+  },
+  {
+    "Id": 28,
+    "Attraction_id": 32,
+    "Telegram_user_id": 1047048746
+  }
+]
